@@ -1,0 +1,20 @@
+{% extends 'warehouses/layout.html' %}
+
+{% block title %}Inventory Movements{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Inventory Movements</h1>
+    <a href="{% url 'warehouses:movement_create' %}" class="btn btn-primary ">Create New Movement</a>
+    <hr>
+    <ul class="list-group">
+        {% for movement in movements %}
+            <li class="list-group-item">
+                {{ movement.movement_type }} - {{ movement.product.product_name }} - Quantity: {{ movement.quantity }} - Date: {{ movement.date_moved }} 
+                <a href="{% url 'warehouses:movement_update' movement.pk %}" class="btn btn-sm btn-warning">Edit</a> | 
+                <a href="{% url 'warehouses:movement_delete' movement.pk %}" class="btn btn-sm btn-danger">Delete</a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

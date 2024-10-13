@@ -1,0 +1,14 @@
+{% extends 'orders/layout.html' %}
+
+{% block title %}Delete Order Detail{% endblock %}
+
+{% block content %}
+<h1>Delete Order Detail</h1>
+<p>Are you sure you want to delete this order detail?</p>
+
+<form method="POST">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a href="{% url 'orders:order_detail' order_detail.order.id %}" class="btn btn-secondary">Cancel</a>
+</form>
+{% endblock %}

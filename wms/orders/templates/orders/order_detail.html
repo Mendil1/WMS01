@@ -1,0 +1,54 @@
+{% extends 'orders/layout.html' %}
+
+{% block title %}Order Details{% endblock %}
+
+{% block content %}
+<h1>Order #{{ order.id }} Details</h1>
+<p><strong>Customer:</strong> {{ order.customer }}</p>
+<p><strong>Date:</strong> {{ order.order_date }}</p>
+<p><strong>Status:</strong> {{ order.order_status }}</p>
+<p><strong>Total Amount:</strong> ${{ order.total_amount }}</p>
+
+<h3>Order Details</h3>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Price per Unit</th>
+            <th>Total Price</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for detail in order_details %}
+        <tr>
+            <td>{{ detail.product.product_name }}</td>
+            <td>{{ detail.quantity_ordered }}</td>
+            <td>${{ detail.price_per_unit }}</td>
+            <td>${{ detail.total_price }}</td>
+            <td>
+                <a href="{% url 'orders:order_detail_update' detail.id %}" class="btn btn-warning btn-sm">Edit</a>
+                <form action="{% url 'orders:order_detail_delete' detail.id %}" method="POST" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% if shipment %}
+<h3>Shipment Information</h3>
+<p><strong>Shipment Status:</strong> {{ shipment.shipment_status }}</p>
+<p><strong>Tracking Number:</strong> {{ shipment.tracking_number }}</p>
+<a href="{% url 'orders:shipment_update' shipment.id %}" class="btn btn-warning btn-sm">Edit Shipment</a>
+<form action="{% url 'orders:shipment_delete' shipment.id %}" method="POST" style="display:inline;">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger btn-sm">Delete Shipment</button>
+</form>
+{% else %}
+<a href="{% url 'orders:shipment_create' order.id %}" class="btn btn-primary">Add Shipment</a>
+{% endif %}
+{% endblock %}
