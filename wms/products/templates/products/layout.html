@@ -4,10 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Product Management{% endblock %}</title>
+    <title>{% block title %}Products Management{% endblock %}</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <!-- Custom CSS for additional styling -->
     <style>
         body {
             padding-top: 56px;
@@ -30,10 +29,9 @@
     </style>
 </head>
 <body>
-    <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="#">Product Management</a>
+            <a class="navbar-brand" href="#">Products Management</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -53,20 +51,17 @@
         </div>
     </nav>
 
-    <!-- Main Content Container -->
     <div class="container">
         {% block content %}
         {% endblock %}
     </div>
 
-    <!-- Footer -->
     <footer class="footer mt-auto py-3">
         <div class="container text-center">
-            <span class="text-muted">© 2024 Product Management App. All rights reserved.</span>
+            <span class="text-muted">© 2024 Orders Management App. All rights reserved.</span>
         </div>
     </footer>
 
-    <!-- Bootstrap JS and dependencies (optional) -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

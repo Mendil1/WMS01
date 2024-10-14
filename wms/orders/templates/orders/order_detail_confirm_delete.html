@@ -1,0 +1,17 @@
+{% extends 'orders/layout.html' %}
+
+{% block title %}Confirm Order Detail Deletion{% endblock %}
+
+{% block content %}
+<h1>Are you sure you want to delete this item from the order?</h1>
+
+<p><strong>Product:</strong> {{ order_detail.product }}</p>
+<p><strong>Quantity Ordered:</strong> {{ order_detail.quantity_ordered }}</p>
+<p><strong>Price Per Unit:</strong> {{ order_detail.price_per_unit }}</p>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Yes, Delete</button>
+    <a href="{% url 'orders:order_detail' order_detail.order.id %}" class="btn btn-secondary">Cancel</a>
+</form>
+{% endblock %}

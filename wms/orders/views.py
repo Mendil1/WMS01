@@ -104,17 +104,32 @@ def shipment_create(request, order_id):
         form = ShipmentForm()
     return render(request, 'orders/shipment_form.html', {'form': form, 'order': order})
 
+# def shipment_update(request, pk):
+#     """Update an existing shipment."""
+#     shipment = get_object_or_404(Shipment, pk=pk)
+#     order = shipment.order
+#     if request.method == 'POST':
+#         form = ShipmentForm(request.POST, instance=shipment)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('orders:order_detail', pk=shipment.order.id)
+#     else:
+#         form = ShipmentForm(instance=shipment)
+#     return render(request, 'orders/shipment_form.html', {'form': form, 'order': order})
 def shipment_update(request, pk):
-    """Update an existing shipment."""
     shipment = get_object_or_404(Shipment, pk=pk)
-    if request.method == 'POST':
+    order = shipment.order  # Get the associated order
+
+    if request.method == "POST":
         form = ShipmentForm(request.POST, instance=shipment)
         if form.is_valid():
             form.save()
-            return redirect('orders:order_detail', pk=shipment.order.id)
+            return redirect('orders:shipment_detail', order_id=order.id)
     else:
         form = ShipmentForm(instance=shipment)
-    return render(request, 'orders/shipment_form.html', {'form': form})
+
+    return render(request, 'orders/shipment_form.html', {'form': form, 'order': order})
+
 
 def shipment_delete(request, pk):
     """Delete a shipment."""

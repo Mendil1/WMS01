@@ -19,6 +19,8 @@ urlpatterns = [
     # ----- SHIPMENT URLS -----
     path('<int:order_id>/shipment/', views.shipment_detail, name='shipment_detail'),
     path('<int:order_id>/shipment/create/', views.shipment_create, name='shipment_create'), 
-    path('<int:order_id>/shipment/edit/', views.shipment_update, name='shipment_update'),
+    path('shipment/<int:pk>/edit/', views.shipment_update, name='shipment_update'),
+    # path('<int:order_id>/shipment/edit/', views.shipment_update, name='shipment_update'),
     path('shipments/', views.shipment_list, name='shipment_list'),
+    path('<int:pk>/shipment/delete/', views.shipment_delete, name='shipment_delete'),
 ]
