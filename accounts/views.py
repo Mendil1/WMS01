@@ -3,6 +3,11 @@ from django.contrib.auth import login
 from .forms import UserRegisterForm
 from customers.models import Customer  # Import the Customer model
 
+
+def test_view(request):
+    return render(request, 'accounts/test.html')
+
+
 def register(request):
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)

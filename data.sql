@@ -95,3 +95,42 @@ VALUES ('Nabeul Parts Center', '+216 72 908 765', 'admin@nabeulpartscenter.tn', 
 
 INSERT INTO customers_customer (name, phone_number, email, address) 
 VALUES ('Kairouan Auto Supplies', '+216 77 456 789', 'orders@kairouanautosupplies.tn', '654 Avenue de la Victoire, Kairouan');
+
+
+-- Insertion de commandes dans la table orders_order
+INSERT INTO orders_order (order_date, order_status, total_amount, customer_id) 
+VALUES 
+('2024-10-01', 'Completed', 450.00, 1),  -- Tunis Auto Parts
+('2024-10-02', 'Pending', 225.00, 2),    -- Sfax Car Shop
+('2024-10-03', 'Shipped', 380.00, 3),    -- Monastir Mechanics
+('2024-10-04', 'Delivered', 600.00, 4),  -- Bizerte Spare Parts
+('2024-10-05', 'Cancelled', 300.00, 5),  -- Gabès Auto Service
+('2024-10-06', 'Completed', 750.00, 6),  -- Sousse Motor Parts
+('2024-10-07', 'Shipped', 620.00, 7),    -- Nabeul Parts Center
+('2024-10-08', 'Pending', 800.00, 8);    -- Kairouan Auto Supplies
+
+
+-- Insertion de détails de commande dans la table orders_orderdetail
+INSERT INTO orders_orderdetail (quantity_ordered, price_per_unit, total_price, order_id, product_id)
+VALUES
+(10, 12.50, 125.00, 1, 1),  -- Order 1, Oil Filter
+(5, 45.00, 225.00, 2, 2),   -- Order 2, Brake Pads Set
+(4, 8.75, 35.00, 3, 4),     -- Order 3, Spark Plug
+(2, 150.00, 300.00, 4, 11), -- Order 4, Fuel Pump
+(3, 85.00, 255.00, 5, 7),   -- Order 5, Exhaust Muffler
+(6, 65.00, 390.00, 6, 9),   -- Order 6, Shock Absorber
+(5, 95.00, 475.00, 7, 10),  -- Order 7, All-Season Tires
+(8, 25.00, 200.00, 8, 28);  -- Order 8, Transmission Filter
+
+
+-- Insertion de données d'expéditions dans la table orders_shipment
+INSERT INTO orders_shipment (shipment_date, delivery_date, shipment_status, tracking_number, order_id)
+VALUES
+('2024-10-02', '2024-10-03', 'Delivered', 'TN123456789', 1),  -- Order 1
+('2024-10-03', NULL, 'Pending', 'TN987654321', 2),            -- Order 2
+('2024-10-04', NULL, 'Shipped', 'TN654321987', 3),            -- Order 3
+('2024-10-05', '2024-10-06', 'Delivered', 'TN321654987', 4),  -- Order 4
+('2024-10-06', NULL, 'Cancelled', 'TN852741963', 5),          -- Order 5
+('2024-10-07', '2024-10-08', 'Delivered', 'TN741852963', 6),  -- Order 6
+('2024-10-08', NULL, 'Shipped', 'TN159753852', 7),            -- Order 7
+('2024-10-09', NULL, 'Pending', 'TN456789123', 8);            -- Order 8
