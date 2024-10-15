@@ -1,0 +1,22 @@
+{% extends 'warehouses/layout.html' %}
+
+{% block title %}Warehouse Home{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Welcome to Warehouse Management</h1>
+    <h2>Warehouses</h2>
+    <ul>
+        {% for warehouse in warehouses %}
+            <li>{{ warehouse.name }} - {{ warehouse.location }}</li>
+        {% endfor %}
+    </ul>
+    
+    <h2>Inventory Movements</h2>
+    <ul>
+        {% for movement in movements %}
+            <li>{{ movement.movement_type }} - {{ movement.product.product_name }} - Quantity: {{ movement.quantity }} - Date: {{ movement.date_moved }}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

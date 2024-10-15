@@ -1,0 +1,13 @@
+{% extends 'products/layout.html' %}
+
+{% block title %}Supplier Form{% endblock %}
+
+{% block content %}
+<h1>Supplier Form</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-success">Save</button>
+</form>
+<a href="{% url 'products:supplier_list' %}" class="btn btn-secondary mt-2">Back to Supplier List</a>
+{% endblock %}

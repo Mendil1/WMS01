@@ -1,0 +1,18 @@
+{% extends 'products/layout.html' %}
+
+{% block title %}Categories{% endblock %}
+
+{% block content %}
+<h1>Categories</h1>
+<a href="{% url 'products:category_create' %}" class="btn btn-primary">Create New Category</a>
+<hr>
+<ul class="list-group">
+    {% for category in categories %}
+    <li class="list-group-item">
+        {{ category.category_name }}
+        <a href="{% url 'products:category_update' category.id %}" class="btn btn-sm btn-warning">Edit</a>
+        <a href="{% url 'products:category_delete' category.id %}" class="btn btn-sm btn-danger">Delete</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

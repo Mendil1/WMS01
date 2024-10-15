@@ -1,0 +1,14 @@
+{% extends 'products/layout.html' %}
+
+{% block title %}Product Details{% endblock %}
+
+{% block content %}
+<h1>{{ product.product_name }}</h1>
+<p>Category: {{ product.category }}</p>
+<p>Supplier: {{ product.supplier }}</p>
+<p>Price: {{ product.price_per_unit }} USD</p>
+<p>Quantity in Stock: {{ product.quantity_in_stock }}</p>
+<p>Total Value: {{ product.total_value }}</p>
+
+<a href="{% url 'products:product_list' %}" class="btn btn-secondary">Back to Product List</a>
+{% endblock %}

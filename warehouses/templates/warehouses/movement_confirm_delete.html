@@ -1,0 +1,15 @@
+{% extends 'warehouses/layout.html' %}
+
+{% block title %}Delete Movement{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Delete Movement</h1>
+    <p>Are you sure you want to delete this movement of {{ movement.product.product_name }}?</p>
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Yes, Delete</button>
+        <a href="{% url 'warehouses:movement_list' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+{% endblock %}

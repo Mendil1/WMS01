@@ -1,0 +1,14 @@
+{% extends 'orders/layout.html' %}
+
+{% block title %}Shipment Details{% endblock %}
+
+{% block content %}
+<h1>Shipment for Order #{{ shipment.order.id }}</h1>
+
+<p><strong>Shipment Status:</strong> {{ shipment.shipment_status }}</p>
+<p><strong>Tracking Number:</strong> {{ shipment.tracking_number }}</p>
+<p><strong>Delivery Date:</strong> {{ shipment.delivery_date }}</p>
+
+<a href="{% url 'orders:shipment_update' shipment.id %}" class="btn btn-warning">Edit Shipment</a>
+<a href="{% url 'orders:shipment_list' %}" class="btn btn-secondary">Back to Shipments</a>
+{% endblock %}

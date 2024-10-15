@@ -1,0 +1,36 @@
+{% extends 'orders/layout.html' %}
+
+{% block title %}Shipment List{% endblock %}
+
+{% block content %}
+<h1>Shipments</h1>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Shipment ID</th>
+            <th>Order ID</th>
+            <th>Status</th>
+            <th>Tracking Number</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for shipment in shipments %}
+        <tr>
+            <td>{{ shipment.id }}</td>
+            <td>{{ shipment.order.id }}</td>
+            <td>{{ shipment.shipment_status }}</td>
+            <td>{{ shipment.tracking_number }}</td>
+            <td>
+                <a href="{% url 'orders:shipment_update' shipment.id %}" class="btn btn-warning btn-sm">Edit</a>
+                <form action="{% url 'orders:shipment_delete' shipment.id %}" method="POST" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends "products/layout.html" %}
+
+{% block body %}
+
+<h1>Products App Index</h1>
+
+<h2>Categories</h2>
+<ul>
+    {% for category in categories %}
+        <li>{{ category.category_name }}</li>
+    {% empty %}
+        <li>No categories available.</li>
+    {% endfor %}
+</ul>
+
+<h2>Suppliers</h2>
+<ul>
+    {% for supplier in suppliers %}
+        <li>{{ supplier.supplier_name }} - {{ supplier.phone_number }}</li>
+    {% empty %}
+        <li>No suppliers available.</li>
+    {% endfor %}
+</ul>
+
+<h2>Products</h2>
+<ul>
+    {% for product in products %}
+        <li>{{ product.product_name }} - {{ product.quantity_in_stock }} in stock</li>
+    {% empty %}
+        <li>No products available.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'orders/layout.html' %}
+
+{% block title %}Create / Update Order{% endblock %}
+
+{% block content %}
+<h1>{{ form.instance.id|default:"Create" }} Order</h1>
+
+<form method="post">
+    {% csrf_token %}
+    <div class="form-group">
+        {{ form.customer.label_tag }}
+        {{ form.customer }}
+    </div>
+    <div class="form-group">
+        {{ form.order_status.label_tag }}
+        {{ form.order_status }}
+    </div>
+    <button type="submit" class="btn btn-success">Save</button>
+    <a href="{% url 'orders:order_list' %}" class="btn btn-secondary">Cancel</a>
+</form>
+{% endblock %}

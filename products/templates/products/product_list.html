@@ -1,0 +1,19 @@
+{% extends 'products/layout.html' %}
+
+{% block title %}Products{% endblock %}
+
+{% block content %}
+<h1>Products</h1>
+<a href="{% url 'products:product_create' %}" class="btn btn-primary">Create New Product</a>
+<hr>
+<ul class="list-group">
+    {% for product in products %}
+    <li class="list-group-item">
+        {{ product.product_name }} - {{ product.price_per_unit }} USD
+        <a href="{% url 'products:product_detail' product.id %}" class="btn btn-sm btn-info">Details</a>
+        <a href="{% url 'products:product_update' product.id %}" class="btn btn-sm btn-warning">Edit</a>
+        <a href="{% url 'products:product_delete' product.id %}" class="btn btn-sm btn-danger">Delete</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

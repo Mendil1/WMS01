@@ -1,0 +1,15 @@
+{% extends 'warehouses/layout.html' %}
+
+{% block title %}Create / Edit Warehouse{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Create / Edit Warehouse</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success">Save</button>
+        <a href="{% url 'warehouses:warehouse_list' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+{% endblock %}
